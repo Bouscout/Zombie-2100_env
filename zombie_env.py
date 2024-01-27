@@ -8,9 +8,9 @@ class Zombie_2100_Env :
     LOCATIONS = ["city", "suburbs", "mall"]
 
     def __init__(self, normalize=True) -> None:
+        self.normalize = normalize
         self.reset()
         self.actions = ['move1','move2','move3','food','gas','ammo',"hide"]
-        self.normalize = normalize
         
 
     @property
