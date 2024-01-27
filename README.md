@@ -3,6 +3,12 @@ Zombie 2100 is a short vasual strategy survival game made by @blueboxsw. This re
 
 original game link : https://labs.blueboxsw.com/z21/zombie2100/
 
+# requirements
+```python
+python
+numpy
+```
+
 ## How to use
 You will use it as a normal gym environment
 
