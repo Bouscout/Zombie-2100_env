@@ -1,1 +1,1 @@
-from .env import Zombie_Probabilistic_Env
+from .zombie_env import Zombie_2100_Env

@@ -4,12 +4,13 @@ import numpy as np
 
 # Actions: move1,move2,move3,food,gas,ammo,hide
 
-class Zombie_Probabilistic_Env :
+class Zombie_2100_Env :
     LOCATIONS = ["city", "suburbs", "mall"]
 
-    def __init__(self) -> None:
+    def __init__(self, normalize=True) -> None:
         self.reset()
         self.actions = ['move1','move2','move3','food','gas','ammo',"hide"]
+        self.normalize = normalize
         
 
     @property
@@ -169,8 +170,10 @@ class Zombie_Probabilistic_Env :
         location = np.zeros((3))
         location[self.location] = 1
 
-        # stats_states = self.stats.get_stats()
-        stats_states = self.stats.get_stats_normalized(self.max_amount)
+        if self.normalize :
+            stats_states = self.stats.get_stats_normalized(self.max_amount)
+        else :
+            stats_states = self.stats.get_stats()
 
         all_states = np.concatenate([states, location, stats_states])
         return all_states
