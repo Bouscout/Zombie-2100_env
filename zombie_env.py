@@ -108,7 +108,7 @@ class Zombie_2100_Env :
         """
         Perform an action in the environment and return the next state.
 
-        action are passed as an index for the actionsList=[move1,move2,move3,food,gas,ammo,hide]
+        action are passed as an index for the actionsList=[move_to_city, move_to_suburbs, move_to_mall, food, gas, ammo, hide]
 
         >>> next_step, reward, done, message = env.step(3)
         """
@@ -155,8 +155,8 @@ class Zombie_2100_Env :
             done = True
             reward = -3 * (self.max_day - self.day)
         
-        elif self.day == self.max_day :
-            message += "\n You survived"
+        elif self.day == self.max_day + 1 :
+            message += "\n You survived an helicopter came to your rescue"
             done = True
             reward = 28
 
@@ -168,7 +168,7 @@ class Zombie_2100_Env :
 
     def get_states(self) -> np.ndarray:
         """
-        Returnt the actual game states
+        Return the actual game states
         """
         states = np.array([self.alive, self.day / self.max_day, self.turn / 4])
         
@@ -192,7 +192,7 @@ class Zombie_2100_Env :
             "game_info" : {
                 "is_alive" : self.alive,
                 "day/7" : self.day,
-                "turn/3" : self.turn,
+                "turn/4" : self.turn,
                 "is_city" : self.location == 0,
                 "is_suburbs" : self.location == 1,
                 "is_mall" : self.location == 2,
