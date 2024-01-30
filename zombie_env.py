@@ -67,13 +67,18 @@ class Zombie_2100_Env :
         return " No zombie encountered"
         
     def eat_food(self) -> str :
+        message = " Good morning"
         if self.stats.inventory["food"] > 0 :
             self.stats.inventory["food"] -= 1
-            return "  Good morning, you ate 1 food"
+            message += " you ate 1 food"
+            return message
 
         else :
-            self.alive = False
-            return " You died of hunger"
+            if np.random.choice([1, 0], p=np.array([0.5, 0.5])) :
+                self.alive = False
+                message += " you died of hunger"
+            
+            return message
         
     def hiding(self):
         # 10% chance of meeting a zombie
